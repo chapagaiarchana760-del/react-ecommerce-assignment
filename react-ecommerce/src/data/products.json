@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "title": "Wireless Bluetooth Headphones",
+    "price": 49.99,
+    "category": "Electronics",
+    "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80",
+    "description": "High quality wireless headphones with noise cancellation."
+  },
+  {
+    "id": 2,
+    "title": "Smart Watch Series 5",
+    "price": 89.99,
+    "category": "Electronics",
+    "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80",
+    "description": "Fitness tracking smartwatch with heart rate monitor."
+  },
+  {
+    "id": 3,
+    "title": "Classic Leather Backpack",
+    "price": 39.99,
+    "category": "Fashion",
+    "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&q=80",
+    "description": "Durable leather backpack suitable for work and travel."
+  },
+  {
+    "id": 4,
+    "title": "Minimalist Desk Lamp",
+    "price": 24.99,
+    "category": "Home",
+    "image": "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=500&q=80",
+    "description": "Adjustable LED desk lamp with soft warm lighting."
+  },
+  {
+    "id": 5,
+    "title": "Running Shoes",
+    "price": 64.99,
+    "category": "Fashion",
+    "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80",
+    "description": "Lightweight and breathable sports shoes."
+  },
+  {
+    "id": 6,
+    "title": "Ergonomic Office Chair",
+    "price": 129.99,
+    "category": "Home",
+    "image": "https://images.unsplash.com/photo-1580481072645-022f9a6d1294?w=500&q=80",
+    "description": "Comfortable mesh office chair with lumbar support."
+  }
+]
