@@ -1,50 +1,123 @@
 [
   {
     "id": 1,
-    "title": "Wireless Bluetooth Headphones",
-    "price": 49.99,
+    "title": "Wireless Noise-Canceling Headphones",
     "category": "Electronics",
-    "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80",
-    "description": "High quality wireless headphones with noise cancellation."
+    "price": 199.99,
+    "description": "High-fidelity audio with active noise cancellation and 30-hour battery life.",
+    "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80"
   },
   {
     "id": 2,
-    "title": "Smart Watch Series 5",
-    "price": 89.99,
+    "title": "Smart Fitness Watch",
     "category": "Electronics",
-    "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80",
-    "description": "Fitness tracking smartwatch with heart rate monitor."
+    "price": 89.99,
+    "description": "Track steps, heart rate, sleep, and workouts with built-in GPS.",
+    "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80"
   },
   {
     "id": 3,
-    "title": "Classic Leather Backpack",
-    "price": 39.99,
-    "category": "Fashion",
-    "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&q=80",
-    "description": "Durable leather backpack suitable for work and travel."
+    "title": "Minimalist Backpack",
+    "category": "Accessories",
+    "price": 49.99,
+    "description": "Durable, water-resistant backpack suitable for everyday travel and laptops.",
+    "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=600&q=80"
   },
   {
     "id": 4,
-    "title": "Minimalist Desk Lamp",
-    "price": 24.99,
+    "title": "Stainless Steel Water Bottle",
     "category": "Home",
-    "image": "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=500&q=80",
-    "description": "Adjustable LED desk lamp with soft warm lighting."
+    "price": 24.99,
+    "description": "Insulated flask that keeps drinks cold for 24 hours or hot for 12 hours.",
+    "image": "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=600&q=80"
   },
   {
     "id": 5,
-    "title": "Running Shoes",
-    "price": 64.99,
-    "category": "Fashion",
-    "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80",
-    "description": "Lightweight and breathable sports shoes."
+    "title": "Mechanical Gaming Keyboard",
+    "category": "Electronics",
+    "price": 79.99,
+    "description": "RGB backlit mechanical keyboard with tactile switches for precision.",
+    "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=600&q=80"
   },
   {
     "id": 6,
-    "title": "Ergonomic Office Chair",
-    "price": 129.99,
+    "title": "Classic Denim Jacket",
+    "category": "Apparel",
+    "price": 59.99,
+    "description": "Timeless cotton denim jacket with standard fit and button closure.",
+    "image": "https://mersea.com/cdn/shop/files/summer-jacket-washed-chambray-8.jpg?v=1771267431&width=1920"
+  },
+  {
+    "id": 7,
+    "title": "Non-Slip Yoga Mat",
+    "category": "Fitness",
+    "price": 29.99,
+    "description": "Eco-friendly 6mm extra-thick yoga mat with carrying strap.",
+    "image": "https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": 8,
+    "title": "Ceramic Pour-Over Coffee Maker",
     "category": "Home",
-    "image": "https://images.unsplash.com/photo-1580481072645-022f9a6d1294?w=500&q=80",
-    "description": "Comfortable mesh office chair with lumbar support."
+    "price": 34.99,
+    "description": "Manual pour-over coffee brewer for rich and smooth single-origin coffee.",
+    "image": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": 9,
+    "title": "Polarized Sunglasses",
+    "category": "Accessories",
+    "price": 39.99,
+    "description": "UV400 protection polarized lenses with lightweight matte black frame.",
+    "image": "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": 10,
+    "title": "Hardcover Productivity Planner",
+    "category": "Books",
+    "price": 19.99,
+    "description": "Undated daily planner designed for goal tracking and time blocking.",
+    "image": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": 11,
+    "title": "Portable Bluetooth Speaker",
+    "category": "Electronics",
+    "price": 45.00,
+    "description": "Compact IPX7 waterproof speaker with rich bass and 12-hour playtime.",
+    "image": "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": 12,
+    "title": "Adjustable Resistance Bands Set",
+    "category": "Fitness",
+    "price": 22.50,
+    "description": "Set of 5 color-coded exercise bands with door anchor and handles.",
+    "image": "https://images.unsplash.com/photo-1598289431512-b97b0917affc?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": 13,
+    "title": "Leather Bifold Wallet",
+    "category": "Accessories",
+    "price": 32.00,
+    "description": "Genuine leather wallet featuring RFID blocking and quick-access card slots.",
+    "image": "https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": 14,
+    "title": "Cotton Graphic T-Shirt",
+    "category": "Apparel",
+    "price": 25.00,
+    "description": "100% organic cotton breathable crewneck tee with modern minimalist print.",
+    "image": "https://cottonon.com/dw/image/v2/BBDS_PRD/on/demandware.static/-/Sites-catalog-master-men/default/dw57ef62d5/3612341/3612341-254-4.jpg?sw=640&sh=960&sm=fit"
+  },
+  {
+    "id": 15,
+    "title": "Aroma Essential Oil Diffuser",
+    "category": "Home",
+    "price": 28.99,
+    "description": "Ultrasonic cool mist humidifier with 7 LED mood light settings.",
+    "image": "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=600&q=80"
   }
 ]
+
