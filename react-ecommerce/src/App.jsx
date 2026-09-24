@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Catalog from './pages/Catalog';
-import Cart from './pages/Cart';
+import Navbar from './components/navbar.jsx';
+import Footer from './components/Footer.jsx';
+import Catalog from './pages/Catalog.jsx';
+import Cart from './pages/Cart.jsx';
 
 export default function App() {
   // Initialize cart state from localStorage if available
