@@ -6,18 +6,25 @@ import Catalog from './pages/Catalog.jsx';
 import Cart from './pages/Cart.jsx';
 
 export default function App() {
-  // Initialize cart state from localStorage if available
   const [cart, setCart] = useState(() => {
     const savedCart = localStorage.getItem('shopping_cart');
     return savedCart ? JSON.parse(savedCart) : [];
   });
 
-  // Effect to sync cart state with localStorage whenever it changes
+  const [toastMessage, setToastMessage] = useState('');
+
   useEffect(() => {
     localStorage.setItem('shopping_cart', JSON.stringify(cart));
   }, [cart]);
 
-  // Handler to add product to cart
+  // Trigger temporary notification banner
+  const triggerToast = (message) => {
+    setToastMessage(message);
+    setTimeout(() => {
+      setToastMessage('');
+    }, 2500);
+  };
+
   const handleAddToCart = (product) => {
     setCart((prevCart) => {
       const existingItem = prevCart.find((item) => item.id === product.id);
@@ -30,9 +37,10 @@ export default function App() {
       }
       return [...prevCart, { ...product, quantity: 1 }];
     });
+
+    triggerToast(`Added "${product.title}" to cart!`);
   };
 
-  // Handler to update quantity of a specific cart item
   const handleUpdateQuantity = (productId, newQuantity) => {
     if (newQuantity <= 0) {
       handleRemoveFromCart(productId);
@@ -45,41 +53,72 @@ export default function App() {
     );
   };
 
-  // Handler to remove item from cart
   const handleRemoveFromCart = (productId) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
   };
 
-  // Handler to clear all cart items
   const handleClearCart = () => {
     setCart([]);
   };
 
-  // Calculate total item count for Navbar badge
+  const handleCheckout = () => {
+    setCart([]);
+    triggerToast('🎉 Order placed successfully! Thank you for shopping.');
+  };
+
   const totalCartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
     <Router>
-      <div style={{ minHeight: '100vh', backgroundColor: '#f3f4f6' }}>
+      <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: '#f3f4f6', position: 'relative' }}>
         <Navbar cartCount={totalCartCount} />
-        <Routes>
-          <Route
-            path="/"
-            element={<Catalog onAddToCart={handleAddToCart} />}
-          />
-          <Route
-            path="/cart"
-            element={
-              <Cart
-                cartItems={cart}
-                onUpdateQuantity={handleUpdateQuantity}
-                onRemoveFromCart={handleRemoveFromCart}
-                onClearCart={handleClearCart}
-              />
-            }
-          />
-        </Routes>
+
+        {/* Toast Notification Pop-up */}
+        {toastMessage && (
+          <div style={styles.toast}>
+            {toastMessage}
+          </div>
+        )}
+
+        <div style={{ flex: 1 }}>
+          <Routes>
+            <Route
+              path="/"
+              element={<Catalog onAddToCart={handleAddToCart} />}
+            />
+            <Route
+              path="/cart"
+              element={
+                <Cart
+                  cartItems={cart}
+                  onUpdateQuantity={handleUpdateQuantity}
+                  onRemoveFromCart={handleRemoveFromCart}
+                  onClearCart={handleClearCart}
+                  onCheckout={handleCheckout}
+                />
+              }
+            />
+          </Routes>
+        </div>
+        <Footer />
       </div>
     </Router>
   );
 }
+
+const styles = {
+  toast: {
+    position: 'fixed',
+    top: '70px',
+    right: '20px',
+    backgroundColor: '#10b981',
+    color: '#ffffff',
+    padding: '0.8rem 1.2rem',
+    borderRadius: '8px',
+    boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+    zIndex: 1000,
+    fontWeight: '600',
+    fontSize: '0.95rem',
+    transition: 'all 0.3s ease',
+  },
+};
