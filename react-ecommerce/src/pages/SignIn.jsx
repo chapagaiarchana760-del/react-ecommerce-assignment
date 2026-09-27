@@ -33,7 +33,7 @@ export default function SignIn({ onLogin }) {
               <input
                 type="email"
                 required
-                placeholder="student@techspire.edu.np"
+                placeholder="name@gmail.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 style={styles.input}
