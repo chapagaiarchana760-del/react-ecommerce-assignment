@@ -119,7 +119,11 @@ const styles = {
     fontSize: '0.95rem',
     outline: 'none',
     color: '#000000', // <-- Sets filled text color strictly to solid black
+    backgroundColor: '#ffffff', // Ensures input background stays white
+    WebkitTextFillColor: '#000000', // Overrides browser autofill text color
   },
+
+ 
   button: {
     backgroundColor: '#082e88',
     color: '#ffffff',
