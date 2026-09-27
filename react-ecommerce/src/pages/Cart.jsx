@@ -162,8 +162,8 @@ const styles = {
     gap: '0.5rem',
   },
   qtyBtn: {
-    backgroundColor: '#f3f4f6',
-    border: '1px solid #d1d5db',
+    backgroundColor: '#050911',
+    border: '1px solid #020407',
     borderRadius: '4px',
     padding: '4px 8px',
     cursor: 'pointer',

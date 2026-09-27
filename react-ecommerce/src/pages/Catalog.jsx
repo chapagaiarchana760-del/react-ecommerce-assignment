@@ -1,89 +1,68 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ProductCard from '../components/ProductCard.jsx';
-import productsData from '../data/products.json';
+import { Loader2 } from 'lucide-react';
+
+import localProducts from "../data/products.json";
+
 
 export default function Catalog({ onAddToCart }) {
-  const [selectedCategory, setSelectedCategory] = useState('All');
-  const [searchQuery, setSearchQuery] = useState('');
-  const [sortOption, setSortOption] = useState('default');
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  // Extract unique categories dynamically
-  const categories = ['All', ...new Set(productsData.map((p) => p.category))];
+  useEffect(() => {
+    // Simulate an asynchronous API network fetch using a Promise
+    const fetchProductsApi = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (localProducts && localProducts.length > 0) {
+          resolve(localProducts);
+        } else {
+          reject(new Error('Failed to fetch products from local API data source.'));
+        }
+      }, 500); // 500ms delay simulates real network latency
+    });
 
-  // 1. Filter by category
-  let filteredProducts = selectedCategory === 'All'
-    ? productsData
-    : productsData.filter((p) => p.category === selectedCategory);
+    fetchProductsApi
+      .then((data) => {
+        setProducts(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setLoading(false);
+      });
+  }, []);
 
-  // 2. Filter by search query
-  if (searchQuery.trim() !== '') {
-    filteredProducts = filteredProducts.filter((p) =>
-      p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      p.description.toLowerCase().includes(searchQuery.toLowerCase())
+  if (loading) {
+    return (
+      <div style={styles.center}>
+        <Loader2 size={36} style={styles.spinner} color="#2563eb" />
+        <p style={{ marginTop: '1rem', color: '#4b5563', fontWeight: '500' }}>
+          Fetching catalog items...
+        </p>
+      </div>
     );
   }
 
-  // 3. Sort by price
-  if (sortOption === 'low-high') {
-    filteredProducts = [...filteredProducts].sort((a, b) => a.price - b.price);
-  } else if (sortOption === 'high-low') {
-    filteredProducts = [...filteredProducts].sort((a, b) => b.price - a.price);
+  if (error) {
+    return (
+      <div style={styles.center}>
+        <p style={{ color: '#ef4444', fontWeight: '600' }}>Error: {error}</p>
+        <button onClick={() => window.location.reload()} style={styles.retryBtn}>
+          Retry
+        </button>
+      </div>
+    );
   }
 
   return (
     <div style={styles.container}>
-      <h1 style={styles.heading}>Product Catalog</h1>
-
-      {/* Control Bar: Search, Category Filter, and Sorting */}
-      <div style={styles.controlBar}>
-        {/* Search Input */}
-        <input
-          type="text"
-          placeholder="Search products..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          style={styles.input}
-        />
-
-        {/* Category Filter */}
-        <select
-          value={selectedCategory}
-          onChange={(e) => setSelectedCategory(e.target.value)}
-          style={styles.select}
-        >
-          {categories.map((cat) => (
-            <option key={cat} value={cat}>
-              Category: {cat}
-            </option>
-          ))}
-        </select>
-
-        {/* Sort Dropdown */}
-        <select
-          value={sortOption}
-          onChange={(e) => setSortOption(e.target.value)}
-          style={styles.select}
-        >
-          <option value="default">Sort by: Featured</option>
-          <option value="low-high">Price: Low to High</option>
-          <option value="high-low">Price: High to Low</option>
-        </select>
+      <h1 style={styles.heading}>Latest Products</h1>
+      <div style={styles.grid}>
+        {products.map((product) => (
+          <ProductCard key={product.id} product={product} onAddToCart={onAddToCart} />
+        ))}
       </div>
-
-      {/* Product Grid */}
-      {filteredProducts.length === 0 ? (
-        <p style={styles.noResults}>No products found matching your search.</p>
-      ) : (
-        <div style={styles.grid}>
-          {filteredProducts.map((product) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              onAddToCart={onAddToCart}
-            />
-          ))}
-        </div>
-      )}
     </div>
   );
 }
@@ -95,43 +74,33 @@ const styles = {
     padding: '2rem 1rem',
   },
   heading: {
-    fontSize: '2rem',
-    fontWeight: '700',
-    marginBottom: '1.5rem',
+    fontSize: '1.75rem',
+    fontWeight: '800',
     color: '#111827',
-  },
-  controlBar: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    gap: '1rem',
-    marginBottom: '2rem',
-  },
-  input: {
-    flex: '1 1 250px',
-    padding: '0.6rem 1rem',
-    fontSize: '0.95rem',
-    borderRadius: '6px',
-    border: '1px solid #d1d5db',
-    outline: 'none',
-  },
-  select: {
-    padding: '0.6rem 1rem',
-    fontSize: '0.95rem',
-    borderRadius: '6px',
-    border: '1px solid #d1d5db',
-    backgroundColor: '#ffffff',
-    cursor: 'pointer',
-    outline: 'none',
+    marginBottom: '1.5rem',
   },
   grid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
     gap: '1.5rem',
   },
-  noResults: {
-    textAlign: 'center',
-    color: '#6b7280',
-    fontSize: '1.1rem',
-    marginTop: '3rem',
+  center: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    minHeight: '50vh',
+  },
+  spinner: {
+    animation: 'spin 1s linear infinite',
+  },
+  retryBtn: {
+    marginTop: '1rem',
+    padding: '0.5rem 1rem',
+    backgroundColor: '#2563eb',
+    color: '#ffffff',
+    border: 'none',
+    borderRadius: '6px',
+    cursor: 'pointer',
   },
 };

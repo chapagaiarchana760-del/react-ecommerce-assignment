@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer style={styles.footer}>
       <p style={styles.text}>
-        © {new Date().getFullYear()} TechStore E-Commerce Project. All rights reserved.
+        © {new Date().getFullYear()} AnahStore E-Commerce. All rights reserved.
       </p>
     </footer>
   );
