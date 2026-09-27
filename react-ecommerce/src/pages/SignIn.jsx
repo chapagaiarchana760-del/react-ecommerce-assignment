@@ -118,6 +118,7 @@ const styles = {
     border: '1px solid #d1d5db',
     fontSize: '0.95rem',
     outline: 'none',
+    color: '#000000', // <-- Sets filled text color strictly to solid black
   },
   button: {
     backgroundColor: '#082e88',
